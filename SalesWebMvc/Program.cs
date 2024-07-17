@@ -14,9 +14,13 @@ namespace SalesWebMvc
                 options.UseMySql(connectionStr, ServerVersion.AutoDetect(connectionStr)));
 
             // Add services to the container.
+            builder.Services.AddScoped<SeedingService>();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+
+            app.Services.CreateScope().ServiceProvider.GetRequiredService<SeedingService>().Seed();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
