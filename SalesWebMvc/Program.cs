@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SalesWebMvc.Data;
+using SalesWebMvc.Models.Services;
 using System.Configuration;
 namespace SalesWebMvc
 {
@@ -16,11 +17,14 @@ namespace SalesWebMvc
             // Add services to the container.
             builder.Services.AddScoped<SeedingService>();
 
+            builder.Services.AddScoped<SellerService>();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
 
             app.Services.CreateScope().ServiceProvider.GetRequiredService<SeedingService>().Seed();
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
