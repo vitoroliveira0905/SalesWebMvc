@@ -6,7 +6,7 @@ namespace SalesWebMvc.Models.Services
 {
     public class SellerService
     {
-        public readonly SalesWebMvcContext _context;
+        private readonly SalesWebMvcContext _context;
 
         public SellerService(SalesWebMvcContext context)
         {

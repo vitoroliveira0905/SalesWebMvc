@@ -24,6 +24,8 @@ namespace SalesWebMvc
 
             builder.Services.AddScoped<DepartmentService>();
 
+            builder.Services.AddScoped<SalesRecordService>();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
